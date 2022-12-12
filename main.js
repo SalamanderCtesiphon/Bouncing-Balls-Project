@@ -134,6 +134,8 @@ class Ball extends Shape {
       
             if (distance < this.size + ball.size) {
               ball.color = this.color = randomRGB();
+              this.velX = -(this.velX);
+              this.velY = -(this.velY);
             }
           }
         }
