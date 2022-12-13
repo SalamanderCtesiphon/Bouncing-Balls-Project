@@ -35,16 +35,16 @@ class EvilCircle extends Shape {
         this.size = 30;
         window.addEventListener("keydown", (e) => {
             switch (e.key) {
-              case "a":
+              case "h":
                 this.x -= this.velX;
                 break;
-              case "d":
+              case "l":
                 this.x += this.velX;
                 break;
-              case "w":
+              case "k":
                 this.y -= this.velY;
                 break;
-              case "s":
+              case "j":
                 this.y += this.velY;
                 break;
             }
@@ -74,6 +74,21 @@ class EvilCircle extends Shape {
             this.y = this.size;
         }
     }
+
+    collisionDetect() {
+        for (const ball of balls) {
+            if (ball.exists) {
+                const dx = this.x - ball.x;
+                const dy = this.y - ball.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+        
+                if (distance < this.size + ball.size) {
+                    ball.exists = false;
+                }
+            }
+        }
+    }
+    
     
 }
 
@@ -127,7 +142,7 @@ class Ball extends Shape {
             }
           }
         }
-      }
+    }
       
 }
 
